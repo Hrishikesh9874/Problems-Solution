@@ -1,0 +1,25 @@
+#include <bits/stdc++.h> 
+int sqtroot(int n){
+    int start=0,end=n;
+    long long int mid=start+(end-start)/2;
+    long long int ans=-1;
+    while(start<=end){
+        long long int square=mid*mid;
+        if(square==n) return mid;
+        if(square>n){
+            end=mid-1;
+        }
+        else{
+            ans=mid;
+            start=mid+1;
+        }
+        mid=start+(end-start)/2;
+    }
+    return ans;
+}
+
+int sqrtN(long long int N)
+{
+    return sqtroot(N);
+
+}
