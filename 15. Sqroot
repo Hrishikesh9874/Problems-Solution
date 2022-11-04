@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+    int sqInt(int n){
+        int s=0,e=n;
+        long long int mid=s+(s-s)/2;
+        long long int ans=-1;
+        while(s<=e){
+            long long int square=mid*mid;
+            if(square==n){return mid;}
+            if(square>n){e=mid-1;}
+            else{
+                ans=mid;
+                s=mid+1;
+            }
+            mid=s+(e-s)/2;
+        }
+        return ans;
+    }
+
+    double sqD(int n, int precision, int intSol){
+        double factor=1;
+        double ans=intSol;
+            for(int i=0; i<precision; i++){
+                factor=factor/10;
+            for(double j=ans; j*j<n; j+=factor){
+                    ans=j;
+            }
+            }
+            return ans;
+    }
+int main(){
+    int n;
+    cout<<"Provide no. of which you want to calculate root: "<<endl;
+    cin>>n;
+    cout<<"The root of above no. is: "<<sqInt(n)<<endl;
+    int tempSol=sqInt(n);
+    cout<<"And the more precised root is: "<<sqD(n,3, tempSol)<<endl;
+    
+return 0;
+}
