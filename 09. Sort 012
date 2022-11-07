@@ -17,6 +17,5 @@ void sort012(int *arr, int n)
         if(i>=(c1+c2) && i<n){
             arr[i]=2;
         }
-    
     }
 }
