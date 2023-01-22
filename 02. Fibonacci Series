@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+        // Print fibonacci series
+    int n;
+    cout<<"Enter the number till you want to print fibonacci";
+    cin>>n;
+    int a=0,b=1;
+    cout<<a<<" "<<b<<" ";
+    for(int i=1; i<=n; i++){
+        int nextF=a+b;
+        cout<<nextF<<" ";
+        a=b;
+        b=nextF;
+    }
+return 0;
+}
