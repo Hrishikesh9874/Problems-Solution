@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        sort(nums.begin(), nums.end());
+
+        int n=nums.size();
+         vector<vector<int>>ans;
+     
+         for(int i=0;i<n;i++){
+             long one=nums[i];
+
+             for(int j=i+1;j<n;j++){
+                 long two=nums[j];
+
+                    long three=j+1;
+                    long four=n-1;
+                    while(three<four){
+                          long sum=one+two+nums[three]+nums[four];
+                
+                          if(sum==target){
+                                vector<int>temp;
+                                temp.push_back(nums[i]);
+                                temp.push_back(nums[j]);
+                                temp.push_back((nums[three]));
+                                temp.push_back((nums[four]));
+                                sort(temp.begin(), temp.end());
+                                ans.push_back(temp);
+                                three++;
+                                four--;
+                            }
+
+                            else if(sum<target){three++;}
+                            else four--;
+                        }
+               }
+        }
+     
+        sort(ans.begin(),ans.end());
+        ans.erase(unique(ans.begin(), ans.end()), ans.end());
+       
+        return ans;
+    }
+};
