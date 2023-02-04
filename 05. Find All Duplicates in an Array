@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& nums) {
+        vector<int>ans;
+        int size=nums.size();
+        sort(nums.begin(),nums.end());
+int i=0;
+while(i<size){
+    int count=1;
+    for(int j=i+1;j<size;j++){
+        if(nums[i]==nums[j]){count++;}
+        else{break;}
+        if(count==2){ans.push_back(nums[j]);}
+        
+    }
+i=i+count;
+    }
+        return ans;
+    }
+};
