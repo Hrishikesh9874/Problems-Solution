@@ -1,0 +1,43 @@
+class Solution {
+public:
+    
+    bool valid(char ch){
+        if(('a'<=ch && ch<='z') || ('A'<=ch && ch<='Z') || ('0'<=ch && ch<='9')){
+            return true;
+        }
+        else return false;
+    }
+    
+    char lowercase(char ch){
+        if(('0'<=ch && ch<='9') || ('a'<=ch && ch<='z')){
+            return ch;
+        }
+        else{
+            char temp=ch-'A'+'a';
+            return temp;
+        }
+    }
+    
+    bool isPalindrome(string s) {
+        vector<char>temp;
+        for(int i=0; i<=s.size();i++){
+            if(valid(s[i])){
+                temp.push_back(s[i]);
+            }
+        }
+        
+        int start=0;
+        int end=temp.size()-1;
+      while(start<=end){
+        if(lowercase(temp[start])!=lowercase(temp[end])){
+            return false;
+        }
+        else{
+            start++;
+            end--;
+        }
+       }
+         return true;
+                
+    }
+};
