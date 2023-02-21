@@ -1,0 +1,33 @@
+class Solution {
+private: 
+void rotate(string &s){
+		char x = s[0];
+
+		s.erase(s.begin());
+		s.push_back(x);
+}
+
+public:
+    bool rotateString(string s, string goal) {
+        
+        int n=s.size();
+        int g=goal.size();
+
+		if(n != g){
+			return false;
+		}
+		if(s == goal){
+			return true;
+		}
+
+		while(n){
+			if(s == goal){
+				return true;
+			}
+			rotate(s);
+            n--;
+		}
+
+		return false;
+	}
+};
