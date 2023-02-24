@@ -1,0 +1,26 @@
+bool isValid(string s) {
+        stack<char>temp;
+        int n=s.size();
+        int i=0;
+        char ch;
+        while(i<n){
+            if(s[i]=='(' || s[i]=='[' || s[i]=='{'){
+                temp.push(s[i]);
+            }
+            else{
+                if(temp.empty()){
+                    return false;
+                }
+                ch=temp.top();
+                temp.pop();
+                if(s[i]==')' && ch!='(' || s[i]==']' && ch!='[' || s[i]=='}' && ch!='{'){
+                    return false;
+                }
+            }
+            i++;
+        }
+            if(!temp.empty()){
+                return false;
+            }
+        return true;
+    }
