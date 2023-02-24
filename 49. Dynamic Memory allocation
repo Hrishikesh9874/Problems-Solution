@@ -1,0 +1,81 @@
+// How to create a 2d array dynamically (by using heap memory)
+// How to take input and output of rows and columns
+// How to release the heap memory after the completion of program
+
+
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    // int n;
+    // cin>>n;
+
+    // // Creating a 2d array
+    // int** arr=new int* [n];
+    // for(int i=0; i<n; i++){
+    //     arr[i]=new int[n];
+    // }
+    // // Creation done
+
+    // // Taking input
+    // for(int i=0; i<n; i++){
+    //     for(int j=0; j<n; j++){
+    //         cin>>arr[i][j];
+    //     }
+    // }
+
+    // // Output
+    // for(int i=0; i<n; i++){
+    //     for(int j=0; j<n; j++){
+    //         cout<<arr[i][j]<<" ";
+    //     }
+    //     cout<<endl;
+    // }
+
+
+
+
+
+    // Creting a 2d array with different no of rows and columns taken by user
+    int n;
+    cout<<"Please enter the no of rows"<<endl;
+    cin>>n;
+
+    int m;
+    cout<<"Please enter the no of columns"<<endl;
+    cin>>m;
+
+    // Creating a 2d array
+    int** arr=new int* [n];
+    for(int i=0; i<n; i++){
+        arr[i]=new int[m];
+    }
+    // Creation done
+
+    // Taking input
+    for(int i=0; i<n; i++){
+        for(int j=0; j<m; j++){
+            cin>>arr[i][j];
+        }
+    }
+
+    // Output
+    for(int i=0; i<n; i++){
+        for(int j=0; j<m; j++){
+            cout<<arr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+
+    // Releasing the memory as we have created the array in heap memory and in cpp we have to clear the heap memory manually
+        // Firstly clearing all the arrays corresponding to the pointer new array
+    for(int i=0; i<n; i++){
+        delete [] arr[i];
+    }
+
+        // Clearing the new pointer array
+    delete [] arr;
+    return 0;
+}
