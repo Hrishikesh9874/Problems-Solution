@@ -1,0 +1,37 @@
+int romanToInt(string s) {
+        unordered_map<char,int>t;
+        t['I']=1;
+        t['V']=5;
+        t['X']=10;
+        t['L']=50;
+        t['C']=100;
+        t['D']=500;
+        t['M']=1000;
+
+        int ans=0;
+        int n=s.size()-1;
+        if(n==0){
+            ans+= t[s[0]];
+        }
+        for(int i=1; i<=n; i++){
+            
+                if(t[s[i-1]] < t[s[i]]){
+                    int temp=t[s[i]]-t[s[i-1]];
+                    ans=ans+temp;
+                    i++;
+                    
+                    if(i==n){
+                        ans+=t[s[i]];
+                    }
+                }
+
+            else{
+                ans=ans+t[s[i-1]];
+                if(i==n){
+                    ans+=t[s[i]];
+                }
+            }
+        }
+        
+        return ans;
+    }
