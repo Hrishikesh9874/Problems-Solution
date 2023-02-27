@@ -1,0 +1,30 @@
+string reverseWords(string s) {
+      int n=s.size();
+        
+        vector<string>temp;
+        string tm="";
+    for(int i=0; i<n; i++){
+        
+        if(s[i]>='a' && s[i]<='z' || s[i]>='A' && s[i]<='Z' || s[i]>='0' && s[i]<='9'){
+            tm+=s[i];
+        }
+        else if(tm!="" && s[i]==' '){
+            temp.push_back(tm);
+            tm="";
+        }
+    }
+    
+    if(tm.size()){
+        temp.push_back(tm);
+    }
+    reverse(temp.begin(), temp.end());
+        
+        
+    string ans = "";
+    for (int i=0; i<temp.size(); i++){
+        ans += temp[i];
+        if(i!=temp.size()-1)
+        ans+=" ";
+    }
+        return ans;
+    }
