@@ -1,0 +1,43 @@
+  //    USING PRIORITY_QUEUE
+  
+int lastStoneWeight(vector<int>& stones) {
+        int n=stones.size();
+        priority_queue<int> ans(stones.begin(),stones.end());
+        // if(n==0){
+        //     return stones[0];
+        // }
+        while(n>1)
+        {
+            int x = ans.top();
+            ans.pop();
+            int y = ans.top();
+            ans.pop();
+            ans.push(x-y);
+            n--;
+        }
+        return ans.top();
+    
+    }
+
+
+
+
+//      USING MULTISET
+
+int lastStoneWeight(vector<int>& stones) {
+        int n=stones.size();
+        multiset<int> ans;
+        for(int i=0; i<n; i++){
+            ans.insert(stones[i]);
+        }
+        while(n>1){
+            auto itr=--ans.end();
+            auto itr2=--ans.end();
+            itr--;
+            ans.insert((*itr2)-*(itr));
+            ans.erase(itr);
+            ans.erase(itr2);
+            n--;
+        }
+        return *ans.begin();
+    }
