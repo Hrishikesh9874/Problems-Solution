@@ -1,0 +1,14 @@
+int lengthOfLastWord(string s) {
+        int n=s.size();
+        int count=0;
+        
+        while(n--){
+            if(s[n]>='a' && s[n]<='z'  ||  s[n]>='A' && s[n]<='Z'){
+                count++;
+            }
+            else if(count !=0){
+                break;
+            }
+        }
+        return count;
+    }
