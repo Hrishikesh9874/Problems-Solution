@@ -1,0 +1,115 @@
+// Sum from 1 --> N
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int f(int n){
+    if(n==0){
+        return 0;
+    }
+    return n+f(n-1);
+}
+int main(){
+    
+    int n;
+    cin>>n;
+    cout<<f(n);
+    return 0;
+}
+
+
+
+
+
+    // Swapping array
+
+#include <iostream>
+using namespace std;
+
+void f(int i, int arr[], int n){
+    if(i >= n/2){
+        return;
+    }
+
+    swap(arr[i], arr[n-i-1]);
+    f(i+1, arr, n);
+}
+int main(){
+    
+    int n;
+    cin>>n;
+
+    int arr[n];
+    
+    for(int i=0; i<n; i++){
+        cin>>arr[i];
+    }
+
+    f(0, arr, n);
+
+    for(int i=0; i<n; i++){
+        cout<<arr[i]<<" ";
+    }
+    return 0;
+}
+
+
+
+
+
+
+// Check weather the sting is palindrome or not
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool f(int i, string& name){
+    int n =name.length()-1;
+    if(i >= n/2){
+        return 1;
+    }
+
+    if(name[i] != name[n-i]){
+        return 0;
+    }
+    f(i+1, name);
+}
+int main(){
+    
+    string name="ABACUSUCABA";
+    int i=0;
+    cout<<f(i, name);
+    
+    return 0;
+}
+
+
+
+
+
+// nth fibonacchi number
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int fib(int n){
+    if(n <= 1){
+        return n;
+    }
+
+    return fib(n-1) + fib(n-2);
+}
+int main(){
+
+    int n;
+    cin>>n;
+    cout<<fib(n);
+    
+    return 0;
+}
+
+
+
+
+
+
