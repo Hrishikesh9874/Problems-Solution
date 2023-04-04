@@ -1,0 +1,38 @@
+// All the permutations whose summation = Sum
+#include <bits/stdc++.h>
+using namespace std;
+
+int f(int i, int sum, int n, int arr[], vector<int>& ds){
+    if(i==n){
+        int x=0;
+        for(auto value:ds){
+            x+=value;
+        }
+
+        if(x==sum){
+
+            return 1;
+        }
+        return 0;
+        
+    }
+
+    ds.push_back(arr[i]);
+    int l=f(i+1, sum, n, arr, ds);
+    ds.pop_back();
+
+    int r=f(i+1, sum, n, arr, ds);
+
+    return l+r;
+
+}
+
+int main(){
+    int arr[6]={1, 2, 0, 3, 4, 2};
+    int sum=4;
+    int n=6;
+
+    vector<int> ds;
+    cout<<f(0, sum, n, arr, ds);
+    return 0;
+}
