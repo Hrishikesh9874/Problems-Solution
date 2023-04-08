@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int f(vector<int>& arr, int s, int e){
+    int i=s;
+    int j=e;
+    int pivot=arr[s];
+
+    while(i<j){
+        
+        while(arr[i]<=pivot && i<e){
+            i++;
+        }
+        while(arr[j]>pivot && j>s){
+            j--;
+        }
+
+        if(i<j){
+            swap(arr[i], arr[j]);
+        }
+    }
+
+    swap(arr[j], arr[s]);
+    return j;
+}
+
+void qSort(vector<int>& arr, int s, int e){
+    if(s<e){
+        int partition=f(arr, s, e);
+        qSort(arr, s, partition-1);
+        qSort(arr, partition+1, e);
+    }
+}
+
+
+
+
+vector<int> quickSort(vector<int> arr)
+{
+    qSort(arr, 0, arr.size()-1);
+    return arr;
+}
