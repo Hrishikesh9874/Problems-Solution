@@ -18,3 +18,35 @@ public:
         return ans;
     }
 };
+
+
+
+//*****************           Approach II {Easy}               ******************
+class Solution {
+private:
+    void f(vector<int>& nums, set<vector<int>>& ans, vector<int>& temp, int s){
+        if(s==nums.size()){
+            vector<int>c=temp;
+            sort(c.begin(), c.end());
+            ans.insert(c);
+            return;
+        }
+
+        temp.push_back(nums[s]);
+        f(nums, ans, temp, s+1);
+        temp.pop_back();
+
+        f(nums, ans, temp, s+1);
+    }
+public:
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        set<vector<int>>ans;
+        vector<int>temp;
+        f(nums, ans, temp, 0);
+        vector<vector<int>>finans;
+        for(auto val:ans){
+            finans.push_back(val);
+        }
+        return finans;
+    }
+};
