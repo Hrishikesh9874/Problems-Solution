@@ -1,0 +1,28 @@
+class Solution {
+private:
+    void f(vector<int>& nums, int target, int s, int& fcount, int temp){
+        if(s==nums.size()){
+            if(temp==target){
+                fcount++;
+            }
+            return;
+        }
+
+        //  + pick
+        temp+=nums[s];
+        f(nums, target, s+1, fcount, temp);
+        temp-=nums[s];
+
+        // - pick
+        temp-=nums[s];
+        f(nums, target, s+1,  fcount, temp);
+    }
+public:
+    int findTargetSumWays(vector<int>& nums, int target) {
+        int fcount=0;
+        int temp=0;
+        f(nums, target, 0,  fcount, temp);
+
+        return fcount;
+    }
+};
