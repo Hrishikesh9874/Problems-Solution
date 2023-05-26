@@ -1,0 +1,50 @@
+class Solution {
+private:
+bool check(vector<vector<char>>& board, string word, int i, int j, int s, int row, int col){
+    if(s==word.size()-1){
+        return true;
+    }
+    char temp=board[i][j];
+    board[i][j]='X';
+    // //check right
+    if(j+1<col && word[s+1]==board[i][j+1] && board[i][j+1]!='X'){
+        if(check(board, word, i, j+1, s+1, row, col))
+        return true;
+    }
+
+    // //check down
+    if(i<row-1 && word[s+1]==board[i+1][j] && board[i+1][j]!='X'){
+        if(check(board, word, i+1, j, s+1, row, col))
+        return true;
+    }
+    // //check left
+    if(j-1>=0 && word[s+1]==board[i][j-1] && board[i][j-1]!='X'){
+        if(check(board, word, i, j-1, s+1, row, col))
+        return true;
+    }
+    
+     //check up
+    if(i-1>=0 && word[s+1]==board[i-1][j] && board[i-1][j]!='X'){
+        if(check(board, word, i-1, j, s+1, row, col))
+        return true;
+    }
+    board[i][j]=temp;
+    return false;
+}
+public:
+    bool exist(vector<vector<char>>& board, string word) {
+        int row=board.size();
+        int col=board[0].size();
+
+        for(int i=0; i<row; i++){
+            for(int j=0; j<col; j++){
+                if(word[0]==board[i][j]){
+
+                    if(check(board, word, i, j, 0, row, col))
+                        return true;
+                }
+            }
+        }
+        return false;
+    }
+};
