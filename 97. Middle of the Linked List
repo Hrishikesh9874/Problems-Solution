@@ -1,0 +1,21 @@
+class Solution {
+    int getlength(ListNode* head){
+        int cnt=1;
+        while(head->next != NULL){
+            head=head->next;
+            cnt++;
+        }
+        return cnt;
+    };
+public:
+    ListNode* middleNode(ListNode* head) {
+        int len=getlength(head);
+        int reqlength=(len/2)+1;
+
+        while(--reqlength){
+            head=head->next;
+        }
+        
+        return head;
+    }
+};
