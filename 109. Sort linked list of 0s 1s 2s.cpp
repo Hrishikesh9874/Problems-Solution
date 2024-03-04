@@ -32,3 +32,40 @@ Node* sortList(Node *head){
     }
     return head;
 }
+
+
+
+
+
+
+//    This can be used to sort any linked list not just 0, 1 & 2
+        map<int, bool>available;
+        map<int, int>mymap;
+        Node* temp = head;
+        
+        while(temp != NULL){
+            
+            if(available[temp->data] == 0){
+                mymap[temp->data] = mymap[temp->data] + 1;
+            }
+            else{
+                available[temp->data]=1;
+                mymap[temp->data] = 1;
+            }
+            temp = temp->next;
+            
+        }
+        
+        temp = head;
+        
+        for(auto it=mymap.begin(); it!=mymap.end(); it++){
+            int d = it->first;
+            int n = it->second;
+            
+            while(n--){
+                temp->data = d;
+                temp = temp->next;
+            }
+        }
+    
+        return head;
